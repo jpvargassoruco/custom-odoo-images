@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_odoo_setup_wizard_form" model="ir.ui.view">
+        <field name="name">odoo.setup.wizard.form</field>
+        <field name="model">odoo.setup.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Asistente de Configuración">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Configuración Rápida de ERP</h1>
+                        <p class="text-muted">Ajusta los datos globales de tu empresa fácilmente. Estos cambios aplicarán a todo el sistema.</p>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_name"/>
+                            <field name="currency_id" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="company_logo" widget="image" options="{'size': [128, 128]}" help="Recomendado: Imagen cuadrada (ej. 256x256 px o 512x512 px) idealmente formato PNG transparente para logo y favicon."/>
+                            <field name="company_favicon" widget="image" options="{'size': [32, 32]}" help="Recomendado: Imagen cuadrada pequeña (ej. 32x32 px o 256x256 px). Aparecerá en las pestañas del navegador."/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="apply_settings" string="Guardar Cambios" type="object" class="btn-primary"/>
+                    <button string="Cancelar" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_odoo_setup_wizard" model="ir.actions.act_window">
+        <field name="name">Configuración Inicial ERP</field>
+        <field name="res_model">odoo.setup.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menú accesible desde Configuración General -->
+    <menuitem id="menu_odoo_setup_wizard"
+              name="Asistente de Empresa"
+              parent="base.menu_administration"
+              action="action_odoo_setup_wizard"
+              sequence="1"/>
+</odoo>

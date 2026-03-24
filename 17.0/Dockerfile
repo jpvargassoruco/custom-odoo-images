@@ -18,7 +18,7 @@ RUN git clone -b 17.0 https://github.com/odoomates/odooapps.git /mnt/extra-addon
     git clone https://github.com/odoomates/odooapps.git /mnt/extra-addons/odoomates-odooapps
 
 # Copiar el módulo de autoconfiguración
-COPY custom_addons/odoo_setup_wizard /mnt/extra-addons/odoo_setup_wizard
+COPY 17.0/custom_addons/odoo_setup_wizard /mnt/extra-addons/odoo_setup_wizard
 
 # Configurar permisos para el usuario odoo
 RUN chown -R odoo:odoo /mnt/extra-addons

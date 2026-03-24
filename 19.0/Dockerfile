@@ -14,7 +14,7 @@ RUN git clone -b 19.0 https://github.com/muk-it/odoo-modules.git /mnt/extra-addo
 RUN git clone -b 19.0 https://github.com/odoomates/odooapps.git /mnt/extra-addons/odoomates-odooapps || \
     git clone https://github.com/odoomates/odooapps.git /mnt/extra-addons/odoomates-odooapps
 
-COPY custom_addons/odoo_setup_wizard /mnt/extra-addons/odoo_setup_wizard
+COPY 19.0/custom_addons/odoo_setup_wizard /mnt/extra-addons/odoo_setup_wizard
 
 RUN chown -R odoo:odoo /mnt/extra-addons
 
