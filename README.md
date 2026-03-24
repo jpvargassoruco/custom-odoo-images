@@ -20,6 +20,7 @@ En esa misma pantalla de creación es donde el usuario (tú) debe seleccionar el
 - Verificada de forma estática la corrección de los comandos de Docker. El sistema se encuentra completamente posicionado para publicar utilizando GitHub Actions.
 
 ## Docker compose de ejemplo
+```yaml
 version: '3.8'
 
 services:
@@ -49,3 +50,4 @@ services:
 volumes:
   odoo-web-data:
   odoo-db-data:
+```
