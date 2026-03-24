@@ -18,3 +18,34 @@ En esa misma pantalla de creación es donde el usuario (tú) debe seleccionar el
 - Validada la gramática de Odoo XML para la vista del asistente de configuración (`setup_wizard_views.xml`).
 - Verificada la escritura del archivo de privilegios de seguridad (`ir.model.access.csv`).
 - Verificada de forma estática la corrección de los comandos de Docker. El sistema se encuentra completamente posicionado para publicar utilizando GitHub Actions.
+
+## Docker compose de ejemplo
+version: '3.8'
+
+services:
+  web:
+    # Selecciona el "tag" de la versión que quieres usar: 17.0, 18.0 o 19.0
+    image: ghcr.io/jpvargassoruco/custom-odoo-images:18.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=my_secure_password
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=my_secure_password
+      - POSTGRES_USER=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+
+volumes:
+  odoo-web-data:
+  odoo-db-data:
